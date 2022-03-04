@@ -503,6 +503,7 @@ MonoBehaviour:
   Ball: {fileID: 177912862}
   ScoreText: {fileID: 188020406}
   GameOverText: {fileID: 474497238}
+  bestScoreText: {fileID: 2078529056}
 --- !u!1 &455529321
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,7 +1099,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 450625942}
         m_TargetAssemblyTypeName: MainManager, Assembly-CSharp
-        m_MethodName: NewBackButton
+        m_MethodName: NewBackScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1662,7 +1663,7 @@ GameObject:
   - component: {fileID: 2078529057}
   - component: {fileID: 2078529056}
   m_Layer: 5
-  m_Name: ScoreText (1)
+  m_Name: BestScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

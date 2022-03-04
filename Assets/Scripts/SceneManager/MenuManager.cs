@@ -8,20 +8,35 @@ public class MenuManager : MonoBehaviour
 {
     public GameObject nullEnterPanel;
     public GameObject settingButton;
+    public SaveDataManager saveDataMeneger;
     private bool isOpenDialog;
 
-    private string inputName;
+    public InputField inputName;
+    public Text openBestScore;
 
     private void Start()
     {
+        if (SaveDataManager.Instance.inputNameSave != null)
+        {
+            inputName.text = SaveDataManager.Instance.inputNameSave;
+            openBestScore.text = "Best Score: " + SaveDataManager.Instance.inputNameSave + " : score " + SaveDataManager.Instance.bestScoreSave;
+            openBestScore.gameObject.SetActive(true);
+        }
         isOpenDialog = false;
+    }
+
+    public void ReadStringInput()
+    {
+        Debug.Log("name = " + inputName.text);
+        SaveDataManager.Instance.inputNameSave = inputName.text;
     }
 
     public void NewPlayScene()
     {
+        Debug.Log(inputName.text + " hmm");
         if (!isOpenDialog)
         {
-            if (inputName == null)
+            if (inputName.text == null)
             {
                 OpenDialog();
             }
@@ -62,16 +77,12 @@ public class MenuManager : MonoBehaviour
         isOpenDialog = false;
     }
 
-    public void ReadStringInput(string s)
-    {
-        inputName = s;
-    }
-
     public void NewSetting()
     {
         SceneManager.LoadScene(3);
     }
 
+    
 
 
 }
