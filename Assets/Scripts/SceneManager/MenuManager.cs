@@ -13,13 +13,23 @@ public class MenuManager : MonoBehaviour
 
     public InputField inputName;
     public Text openBestScore;
+    public GameObject hidingPanel;
+
+    public Text bestScoreText;
+    public Text secondScoreText;
+    public Text thirdScoreText;
 
     private void Start()
     {
+        bestScoreText.text = $"Best Score: {SaveDataManager.Instance.bestNameSave}: score {SaveDataManager.Instance.bestScoreSave}";
+        secondScoreText.text = $"Second Score: {SaveDataManager.Instance.secondNameSave}: score {SaveDataManager.Instance.secondScoreSave}";
+        thirdScoreText.text = $"Third Score: {SaveDataManager.Instance.thirdNameSave}: score {SaveDataManager.Instance.thirdScoreSave}";
+
+        hidingPanel.SetActive(false);
         if (SaveDataManager.Instance.inputNameSave != null)
         {
             inputName.text = SaveDataManager.Instance.inputNameSave;
-            openBestScore.text = "Best Score: " + SaveDataManager.Instance.inputNameSave + " : score " + SaveDataManager.Instance.bestScoreSave;
+            openBestScore.text = "Best Score: " + SaveDataManager.Instance.bestNameSave + " : score " + SaveDataManager.Instance.bestScoreSave;
             openBestScore.gameObject.SetActive(true);
         }
         isOpenDialog = false;
@@ -82,7 +92,16 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(3);
     }
 
-    
+    public void HidingTopDarkPanel()
+    {
+        hidingPanel.SetActive(false);
+    }
+    public void OpenTopDarkPanel()
+    {
+        hidingPanel.SetActive(true);
+    }
+
+
 
 
 }

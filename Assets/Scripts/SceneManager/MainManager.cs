@@ -23,10 +23,7 @@ public class MainManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(SaveDataManager.Instance != null)
-        {
             bestScoreText.text = "Best Score : " + SaveDataManager.Instance.bestNameSave + " : " + SaveDataManager.Instance.bestScoreSave;
-        }  
 
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
@@ -77,8 +74,14 @@ public class MainManager : MonoBehaviour
     public void GameOver() 
     {
         SaveDataManager.Instance.scoreSave = m_Points;
-        if(SaveDataManager.Instance.scoreSave > SaveDataManager.Instance.bestScoreSave) // если счет лучше, перезаписываем
+        if(SaveDataManager.Instance.scoreSave >= SaveDataManager.Instance.bestScoreSave) // если счет лучше, перезаписываем
         {
+            SaveDataManager.Instance.thirdScoreSave = SaveDataManager.Instance.secondScoreSave;
+            SaveDataManager.Instance.thirdNameSave = SaveDataManager.Instance.secondNameSave;
+
+            SaveDataManager.Instance.secondScoreSave = SaveDataManager.Instance.bestScoreSave;
+            SaveDataManager.Instance.secondNameSave = SaveDataManager.Instance.bestNameSave;
+
             SaveDataManager.Instance.bestScoreSave = SaveDataManager.Instance.scoreSave;
             SaveDataManager.Instance.bestNameSave = SaveDataManager.Instance.inputNameSave;
         }

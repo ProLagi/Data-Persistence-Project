@@ -11,8 +11,12 @@ public class SaveDataManager : MonoBehaviour
     public static SaveDataManager Instance;
     public string inputNameSave;
     public string bestNameSave;
+    public string secondNameSave;
+    public string thirdNameSave;
     public int scoreSave;
     public int bestScoreSave;
+    public int secondScoreSave;
+    public int thirdScoreSave;
     private void Awake()
     {
         if(Instance != null)
