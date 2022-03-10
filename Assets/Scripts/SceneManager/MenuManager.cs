@@ -8,7 +8,7 @@ public class MenuManager : MonoBehaviour
 {
     public GameObject nullEnterPanel;
     public GameObject settingButton;
-    public SaveDataManager saveDataMeneger;
+    //public SaveDataManager saveDataMeneger;
     private bool isOpenDialog;
 
     public InputField inputName;
@@ -24,6 +24,11 @@ public class MenuManager : MonoBehaviour
         bestScoreText.text = $"Best Score: {SaveDataManager.Instance.bestNameSave}: score {SaveDataManager.Instance.bestScoreSave}";
         secondScoreText.text = $"Second Score: {SaveDataManager.Instance.secondNameSave}: score {SaveDataManager.Instance.secondScoreSave}";
         thirdScoreText.text = $"Third Score: {SaveDataManager.Instance.thirdNameSave}: score {SaveDataManager.Instance.thirdScoreSave}";
+
+        if(inputName.text != null)
+        {
+            inputName.text = SaveDataManager.Instance.inputNameSave;
+        }
 
         hidingPanel.SetActive(false);
         if (SaveDataManager.Instance.inputNameSave != null)
@@ -69,6 +74,7 @@ public class MenuManager : MonoBehaviour
     {
         if (!isOpenDialog)
         {
+            SaveDataManager.Instance.SaveDataNamesAndScores();
             Application.Quit();
         }   
     }

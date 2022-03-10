@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -74,17 +75,34 @@ public class MainManager : MonoBehaviour
     public void GameOver() 
     {
         SaveDataManager.Instance.scoreSave = m_Points;
-        if(SaveDataManager.Instance.scoreSave >= SaveDataManager.Instance.bestScoreSave) // если счет лучше, перезаписываем
+        if (SaveDataManager.Instance.scoreSave >= SaveDataManager.Instance.bestScoreSave) // если счет лучше 1, перезаписываем all
         {
-            SaveDataManager.Instance.thirdScoreSave = SaveDataManager.Instance.secondScoreSave;
+            SaveDataManager.Instance.thirdScoreSave = SaveDataManager.Instance.secondScoreSave; // 3 place
             SaveDataManager.Instance.thirdNameSave = SaveDataManager.Instance.secondNameSave;
 
-            SaveDataManager.Instance.secondScoreSave = SaveDataManager.Instance.bestScoreSave;
+            SaveDataManager.Instance.secondScoreSave = SaveDataManager.Instance.bestScoreSave; // 2 place
             SaveDataManager.Instance.secondNameSave = SaveDataManager.Instance.bestNameSave;
 
-            SaveDataManager.Instance.bestScoreSave = SaveDataManager.Instance.scoreSave;
+            SaveDataManager.Instance.bestScoreSave = SaveDataManager.Instance.scoreSave;       // 1 place
             SaveDataManager.Instance.bestNameSave = SaveDataManager.Instance.inputNameSave;
         }
+        else if (SaveDataManager.Instance.scoreSave >= SaveDataManager.Instance.secondScoreSave) // если счет лучше 2, перезаписываем 2 and 3
+        {
+            SaveDataManager.Instance.thirdScoreSave = SaveDataManager.Instance.secondScoreSave; // 3 place
+            SaveDataManager.Instance.thirdNameSave = SaveDataManager.Instance.secondNameSave;
+
+            SaveDataManager.Instance.secondScoreSave = SaveDataManager.Instance.scoreSave; // 2 place
+            SaveDataManager.Instance.secondNameSave = SaveDataManager.Instance.inputNameSave;
+        }
+        else if (SaveDataManager.Instance.scoreSave >= SaveDataManager.Instance.thirdScoreSave) // если счет лучше 3, перезаписываем 3
+        {
+            SaveDataManager.Instance.thirdScoreSave = SaveDataManager.Instance.scoreSave; // 3 place
+            SaveDataManager.Instance.thirdNameSave = SaveDataManager.Instance.inputNameSave;
+        }
+
+
+        SaveDataManager.Instance.SaveDataNamesAndScores();
+
         m_GameOver = true;
         GameOverText.SetActive(true);
     }
@@ -97,4 +115,7 @@ public class MainManager : MonoBehaviour
     {
         SceneManager.LoadScene(3);
     }
+
+    
+
 }

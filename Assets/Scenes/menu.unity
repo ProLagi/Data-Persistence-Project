@@ -885,7 +885,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &599367395
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1070,9 +1070,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nullEnterPanel: {fileID: 2041464319}
   settingButton: {fileID: 10555680}
-  saveDataMeneger: {fileID: 1676997133}
   inputName: {fileID: 96284758}
   openBestScore: {fileID: 880648303}
+  hidingPanel: {fileID: 599367394}
+  bestScoreText: {fileID: 1391152396}
+  secondScoreText: {fileID: 2108869146}
+  thirdScoreText: {fileID: 1677033260}
 --- !u!1 &832319843
 GameObject:
   m_ObjectHideFlags: 0
@@ -1474,7 +1477,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 753781626}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: NewExitScene
+        m_MethodName: HidingTopDarkPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1607,7 +1610,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 753781626}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: NewAllScoreScene
+        m_MethodName: OpenTopDarkPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2242,8 +2245,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputNameSave: 
   bestNameSave: 
+  secondNameSave: 
+  thirdNameSave: 
   scoreSave: 0
   bestScoreSave: 0
+  secondScoreSave: 0
+  thirdScoreSave: 0
 --- !u!1 &1677033258
 GameObject:
   m_ObjectHideFlags: 0
@@ -2256,7 +2263,7 @@ GameObject:
   - component: {fileID: 1677033261}
   - component: {fileID: 1677033260}
   m_Layer: 5
-  m_Name: BestScoreTextDarkPanel (2)
+  m_Name: ThirdScoreTextDarkPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2752,7 +2759,7 @@ GameObject:
   - component: {fileID: 2108869147}
   - component: {fileID: 2108869146}
   m_Layer: 5
-  m_Name: BestScoreTextDarkPanel (1)
+  m_Name: SecondScoreTextDarkPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2774,7 +2781,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.36413974, y: 0.74428266}
   m_AnchorMax: {x: 0.6343549, y: 0.89244455}
-  m_AnchoredPosition: {x: 1.4451, y: -274}
+  m_AnchoredPosition: {x: 1.4450989, y: -274}
   m_SizeDelta: {x: 702.04, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2108869146
